@@ -16,5 +16,5 @@ COPY . .
 # Expose port (Railway will set the PORT environment variable)
 EXPOSE 8000
 
-# Run the application
-CMD ["python", "main.py"]
+# Run using FastMCP CLI (official recommended approach)
+CMD ["sh", "-c", "fastmcp run main.py --transport http --host 0.0.0.0 --port ${PORT:-8000}"]
