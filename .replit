@@ -1,9 +1,0 @@
-
-[run]
-command = "python main.py"
-
-[nix]
-channel = "stable-22_11"
-
-[deployment]
-run = ["sh", "-c", "python main.py"]
