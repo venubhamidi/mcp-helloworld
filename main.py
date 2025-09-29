@@ -81,37 +81,37 @@ async def search_products(query: str = "", category: str = "") -> str:
 #             return f"Error: {str(e)}"
 
 # V3 TOOL (UNCOMMENT DURING DEMO)
-@mcp.tool()
-async def product_search_inventory(query: str = "", category: str = "", in_stock: bool = None) -> str:
-    """
-    Search products by name, category, and inventory status.
+# @mcp.tool()
+# async def product_search_inventory(query: str = "", category: str = "", in_stock: bool = None) -> str:
+#   """
+# Search products by name, category, and inventory status.
+#
+#    Args:
+#        query: Search query for product names
+#        category: Product category (electronics, furniture)
+#       in_stock: Filter by inventory status (True for in stock, False for out of stock)
 
-    Args:
-        query: Search query for product names
-        category: Product category (electronics, furniture)
-        in_stock: Filter by inventory status (True for in stock, False for out of stock)
-
-    Returns:
-        JSON formatted search results with inventory filtering
-    """
-    async with httpx.AsyncClient() as client:
-        try:
-            # V3 IMPLEMENTATION (CHANGE DURING DEMO)
-            search_data = {
-                "query": query,
-                "category": category,
-                "in_stock": in_stock
-            }
-
-            response = await client.post(f"{API_BASE_URL}/v3/products/search",
-                                       json=search_data)
-
-            response.raise_for_status()
-            data = response.json()
-            return json.dumps(data, indent=2)
-
-        except Exception as e:
-            return f"Error: {str(e)}"
+#    Returns:
+ #       JSON formatted search results with inventory filtering
+  #  """
+  #  async with httpx.AsyncClient() as client:
+   #     try:
+    #        # V3 IMPLEMENTATION (CHANGE DURING DEMO)
+     #       search_data = {
+      #          "query": query,
+       #         "category": category,
+        #        "in_stock": in_stock
+         #   }
+#
+ #           response = await client.post(f"{API_BASE_URL}/v3/products/search",
+  #                                     json=search_data)
+#
+ #           response.raise_for_status()
+  #          data = response.json()
+   #         return json.dumps(data, indent=2)
+#
+ #       except Exception as e:
+  #          return f"Error: {str(e)}"
 
 # Optional: Keep for direct execution compatibility
 if __name__ == "__main__":
