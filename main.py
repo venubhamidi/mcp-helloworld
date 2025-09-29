@@ -1,31 +1,14 @@
-from fastmcp import FastMCP
-
+#!/usr/bin/env python3
 import json
 import httpx
 import os
-
+from fastmcp import FastMCP
 
 API_BASE_URL = "https://product-search-mcp-api.replit.app"
 
 # Create FastMCP server instance
 # CLI will automatically find this object named 'mcp'
 mcp = FastMCP("Product Search MCP Server")
-
-@mcp.tool()
-def hello_world(name: str) -> str:
-    """
-    A simple hello world tool that greets a person by name.
-    
-    Args:
-        name: The name of the person to greet
-        
-    Returns:
-        A greeting message
-    """
-    return f"Hello World {name}"
-
-
-
 
 @mcp.tool()
 async def search_products(query: str = "", category: str = "") -> str:
@@ -96,6 +79,39 @@ async def search_products(query: str = "", category: str = "") -> str:
 #
 #         except Exception as e:
 #             return f"Error: {str(e)}"
+
+# V3 TOOL (UNCOMMENT DURING DEMO)
+@mcp.tool()
+async def product_search_inventory(query: str = "", category: str = "", in_stock: bool = None) -> str:
+    """
+    Search products by name, category, and inventory status.
+
+    Args:
+        query: Search query for product names
+        category: Product category (electronics, furniture)
+        in_stock: Filter by inventory status (True for in stock, False for out of stock)
+
+    Returns:
+        JSON formatted search results with inventory filtering
+    """
+    async with httpx.AsyncClient() as client:
+        try:
+            # V3 IMPLEMENTATION (CHANGE DURING DEMO)
+            search_data = {
+                "query": query,
+                "category": category,
+                "in_stock": in_stock
+            }
+
+            response = await client.post(f"{API_BASE_URL}/v3/products/search",
+                                       json=search_data)
+
+            response.raise_for_status()
+            data = response.json()
+            return json.dumps(data, indent=2)
+
+        except Exception as e:
+            return f"Error: {str(e)}"
 
 # Optional: Keep for direct execution compatibility
 if __name__ == "__main__":
