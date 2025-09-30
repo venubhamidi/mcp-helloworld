@@ -1,3 +1,6 @@
+# Claude Download
+Download Claude Desktop  from https://claude.ai/download
+
 # MCP Dependencies Setup Guide
 
 This guide helps you ensure all dependencies are available to run your `claude_desktop_config.json` with MCP servers.
