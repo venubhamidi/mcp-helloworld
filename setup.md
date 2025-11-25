@@ -234,3 +234,21 @@ source ~/.zshrc
 - npm Documentation: https://docs.npmjs.com/
 - Claude Desktop Documentation: https://docs.claude.com/
 - MCP Documentation: https://modelcontextprotocol.io/
+
+## Claude Desktop
+
+{
+  "mcpServers": {
+    "all-tools": {
+      "command": "/opt/homebrew/bin/node",
+      "args": [
+        "/Users/vb/mcp-bearer-proxy.js"
+      ],
+      "env": {
+        "MCP_URL": "https://mcp-gateway.up.railway.app/servers/488b3334c9e143ab866a3f9e1508f034/mcp",
+        "MCP_TOKEN":"dfds"
+       }
+    }
+}
+}
+
