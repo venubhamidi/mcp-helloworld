@@ -1,0 +1,25 @@
+<head>
+
+</head>
+<body>
+
+    <script>
+  window.wxOConfiguration = {
+    orchestrationID: "20240515-1206-3412-0072-4432425df5b9_20250512-1229-4624-00ec-06e7ebf62270",
+    hostURL: "https://dl.watson-orchestrate.ibm.com",
+    rootElementID: "root",
+    chatOptions: {
+        agentId: "758a8824-e598-4490-88ef-1bd6508750bd", 
+    }
+  };
+  setTimeout(function () {
+    const script = document.createElement('script');
+    script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+    script.addEventListener('load', function () {
+        wxoLoader.init();
+    });
+    document.head.appendChild(script);
+  }, 0);                     
+</script>
+
+</body>
